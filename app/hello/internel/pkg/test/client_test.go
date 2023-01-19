@@ -6,8 +6,8 @@ import (
 	"examples/app/hello/internel/conf"
 	"examples/app/hello/internel/service"
 	v1 "examples/kitex_gen/hello/v1"
-	polariss "examples/pkg/polaris"
 	"fmt"
+	"github.com/Happy-sudo/pkg/polaris"
 	"github.com/cloudwego/kitex/pkg/klog"
 	kitexZap "github.com/kitex-contrib/obs-opentelemetry/logging/zap"
 	"testing"
@@ -27,7 +27,7 @@ func TestClientHello(t *testing.T) {
 
 	ctx := context.Background()
 
-	configFile := polariss.ConfigApi(namespace, fileGroup, fileName)
+	configFile := polaris.ConfigApi(namespace, fileGroup, fileName)
 	//解析远程配置文件
 	config := new(conf.Config)
 	err := json.Unmarshal([]byte(configFile.GetContent()), &config)

@@ -4,9 +4,9 @@ import (
 	"context"
 	"encoding/json"
 	"examples/app/hello/internel/conf"
-	"examples/pkg/logger"
-	"examples/pkg/polaris"
 	"flag"
+	"github.com/Happy-sudo/pkg/logger"
+	"github.com/Happy-sudo/pkg/polaris"
 	"github.com/cloudwego/kitex/pkg/klog"
 	kitexZap "github.com/kitex-contrib/obs-opentelemetry/logging/zap"
 )
@@ -34,7 +34,14 @@ func main() {
 
 	// 自定义日志配置
 	if config.Logger.Enable {
-		klog.SetOutput(logger.CuttingLogWriter(config))
+		var cuttingLogConfig = new(logger.CuttingLogConfig)
+		cuttingLogConfig.Filename = config.Logger.Filename
+		cuttingLogConfig.MaxSize = config.Logger.MaxSize
+		cuttingLogConfig.MaxBackups = config.Logger.MaxBackups
+		cuttingLogConfig.MaxAge = config.Logger.MaxAge
+		cuttingLogConfig.Compress = config.Logger.Compress
+		cuttingLogConfig.LocalTime = config.Logger.LocalTime
+		klog.SetOutput(cuttingLogConfig.CuttingLogWriter())
 	}
 
 	//wire 依赖注入
