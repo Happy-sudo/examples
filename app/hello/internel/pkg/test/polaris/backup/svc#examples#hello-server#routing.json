@@ -1,0 +1,1 @@
+{"code":200000,"info":"execute success","type":"ROUTING","service":{"name":"hello-server","namespace":"examples","revision":"da39a3ee5e6b4b0d3255bfef95601890afd80709"},"routing":{"service":"hello-server","namespace":"examples","revision":"da39a3ee5e6b4b0d3255bfef95601890afd80709"}}
