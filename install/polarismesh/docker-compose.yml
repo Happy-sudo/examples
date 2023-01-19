@@ -1,0 +1,61 @@
+version: "3"
+services:
+  polarismesh:
+    container_name: polarismesh
+    image: polarismesh/polaris-server-standalone:latest
+    ports:
+      - 15010:15010
+      - 8080:8080
+      - 8090:8090
+      - 8091:8091
+      - 8093:8093
+      - 8761:8761
+      - 9000:9000
+      - 9091:9091
+    volumes:
+      - "/polarismesh/config/polaris-config-error.log:/log/polaris-config-error.log"
+      - "/polarismesh/config/polaris-config.log:/log/polaris-config.log"
+      
+      - "/polarismesh/auth/polaris-auth.log:/log/polaris-auth.log"
+      - "/polarismesh/auth/polaris-auth-error.log:/log/polaris-auth-error.log"
+      
+      - "/polarismesh/store/polaris-store.log:/log/polaris-store.log"
+      - "/polarismesh/store/polaris-store-error.log:/log/polaris-store-error.log"
+
+      - "/polarismesh/cache/polaris-cache.log:/log/polaris-cache.log"
+      - "/polarismesh/cache/polaris-cache-error.log:/log/polaris-cache-error.log"
+
+      - "/polarismesh/naming/polaris-naming.log:/log/polaris-naming.log"
+      - "/polarismesh/naming/polaris-naming-error.log:/log/polaris-naming-error.log"
+
+      - "/polarismesh/healthcheck/polaris-healthcheck.log:/log/polaris-healthcheck.log"
+      - "/polarismesh/healthcheck/polaris-healthcheck-error.log:/log/polaris-healthcheck-error.log"
+
+      - "/polarismesh/xdsv3/polaris-xdsv3.log:/log/polaris-xdsv3.log"
+      - "/polarismesh/stoxdsv3re/polaris-xdsv3-error.log:/log/polaris-xdsv3-error.log"
+
+      - "/polarismesh/apiserver/polaris-apiserver.log:/log/polaris-apiserver.log"
+      - "/polarismesh/apiserver/polaris-apiserver-error.log:/log/polaris-apiserver-error.log"
+
+      - "/polarismesh/defaultAuth/polaris-defaultauth.log:/log/polaris-defaultauth.log"
+      - "/polarismesh/defaultAuth/polaris-password-error.log:/log/polaris-password-error.log"
+
+      - "/polarismesh/discoverevent/polaris-discoverevent.log:/log/polaris-discoverevent.log"
+      - "/polarismesh/discoverevent/polaris-discoverevent-error.log:/log/polaris-discoverevent-error.log"
+
+      - "/polarismesh/discoverstat/polaris-discoverstat.log:/log/polaris-discoverstat.log"
+      - "/polarismesh/discoverstat/polaris-discoverstat-error.log:/log/polaris-discoverstat-error.log"
+
+      - "/polarismesh/ratelimit/polaris-ratelimit.log:/log/polaris-ratelimit.log"
+      - "/polarismesh/ratelimit/polaris-ratelimit-error.log:/log/polaris-ratelimit-error.log"
+
+      - "/polarismesh/statis/polaris-statis.log:/log/polaris-statis.log"
+      - "/polarismesh/statis/polaris-statis-error.log:/log/polaris-statis-error.log"
+
+      - "/polarismesh/history/polaris-history.log:/log/polaris-history.log"
+      - "/polarismesh/history/polaris-history-error.log:/log/polaris-history-error.log"
+
+      - "/polarismesh/default/polaris-default.log:/log/polaris-default.log"
+      - "/polarismesh/default/polaris-default-error.log:/log/polaris-default-error.log"
+
+    restart: always

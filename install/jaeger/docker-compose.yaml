@@ -1,0 +1,83 @@
+version: "3.7"
+services:
+
+  # Collector
+  otel-collector:
+    image: otel/opentelemetry-collector-contrib:latest
+    command: [ "--config=/etc/otel-collector-config.yaml", "${OTELCOL_ARGS}" ]
+    volumes:
+      - ./otel-collector-config.yaml:/etc/otel-collector-config.yaml
+    ports:
+      - "1888:1888"   # pprof extension
+      - "8888"   # Prometheus metrics exposed by the collector
+      - "8889:8889"   # Prometheus exporter metrics
+      - "13133:13133" # health_check extension
+      - "4317:4317"   # OTLP gRPC receiver
+      - "55679" # zpages extension
+    depends_on:
+      - jaeger-all-in-one
+    network_mode: host
+
+ #e lasticsearch es
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.2.0
+    restart: always
+    volumes:
+      - ./elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml
+    environment:
+      - "discovery.type=single-node"
+    expose:
+      - "9200"
+    ports:
+      - "9200:9200"
+
+  # Jaeger 链路
+  jaeger-all-in-one:
+    image: jaegertracing/all-in-one:latest
+    environment:
+      #- ES_SERVER_URLS=http://0.0.0.0:9200/
+      #- SPAN_STORAGE_TYPE=elasticsearch
+      - ES_TAGS_AS_FIELDS=true
+      - COLLECTOR_OTLP_ENABLED=true
+    ports:
+      - "16686:16686"
+      - "14268"
+      - "14250:14250"
+      - "6831:6831"
+    #network_mode: host
+
+  # Victoriametrics  存储
+  victoriametrics:
+    container_name: victoriametrics
+    image: victoriametrics/victoria-metrics
+    ports:
+      - "8428:8428"
+      - "8089:8089"
+      - "8089:8089/udp"
+      - "2003:2003"
+      - "2003:2003/udp"
+      - "4242:4242"
+    command:
+      - '--storageDataPath=./storage'
+      - '--graphiteListenAddr=:2003'
+      - '--opentsdbListenAddr=:4242'
+      - '--httpListenAddr=:8428'
+      - '--influxListenAddr=:8089'
+    restart: always
+    network_mode: host
+
+  # Grafana 指标
+  grafana:
+    image: grafana/grafana:latest
+    volumes:
+      - ./grafana_data:/var/lib/grafana
+    environment:
+      - GF_AUTH_ANONYMOUS_ENABLED=true
+      - GF_AUTH_ANONYMOUS_ORG_ROLE=Admin
+      - GF_AUTH_DISABLE_LOGIN_FORM=true
+    #depends_on:
+    #  - prometheus
+    ports:
+      - "3000:3000"
+    network_mode: host
+
