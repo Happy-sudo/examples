@@ -1,0 +1,82 @@
+{
+  "service": {
+    "namespace":"examples",
+    "server_name":"hello-service",
+    "client_name":"hello-client",
+    "version": "v1.0.0"
+  },
+  "server": {
+    "rpc": {
+      "enable": true,
+      "address": "127.0.0.1:4441",
+      "net_work": "tcp"
+    },
+    "polaris": {
+      "enable": true
+    },
+    "jaeger": {
+      "enable": true,
+      "endpoint": "127.0.0.1:4317"
+    },
+    "transport": {
+      "enable": false
+    },
+    "limit": {
+      "enable": false,
+      "max_connections": 10000,
+      "max_qps": 1000
+    },
+    "stats_level": {
+      "level_disabled": false,
+      "level_base": false,
+      "level_detailed": true
+    }
+  },
+  "client": {
+    "timeout_control": {
+      "rpc_time_out": {
+        "enable": false,
+        "time_out": "3s"
+      },
+      "connect_time_out": {
+        "enable": false,
+        "time_out": "50ms"
+      }
+    },
+    "connection_type": {
+      "short_connection": {
+        "enable": false
+      },
+      "long_connection": {
+        "enable": false,
+        "max_idle_per_address": 10,
+        "min_idle_per_address": 2,
+        "max_idle_global": 100,
+        "max_idle_time_out": "60s"
+      },
+      "transport": {
+        "enable": false,
+        "mux_connection": 2
+      }
+    },
+    "failure_retry": {
+      "enable": false,
+      "max_retry_times": 5
+    },
+    "load_balancer": {
+      "enable": false
+    },
+    "cbsuite": {
+      "enable": false
+    }
+  },
+  "logger":{
+    "enable":true,
+    "file_name":"./log/hello-service.log",
+    "max_size":1,
+    "max_backups":10,
+    "max_age":30,
+    "compress":false,
+    "local_time":true
+  }
+}
