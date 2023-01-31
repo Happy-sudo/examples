@@ -1,4 +1,4 @@
 
-go build -o examples
+go build -o hello
 
-./examples
+./hello

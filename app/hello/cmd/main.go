@@ -3,12 +3,12 @@ package main
 import (
 	"context"
 	"encoding/json"
-	"examples/app/hello/internel/conf"
 	"flag"
 	"github.com/Happy-sudo/pkg/logger"
 	"github.com/Happy-sudo/pkg/polaris"
 	"github.com/cloudwego/kitex/pkg/klog"
 	kitexZap "github.com/kitex-contrib/obs-opentelemetry/logging/zap"
+	"hello/internel/conf"
 )
 
 var (
@@ -43,7 +43,6 @@ func main() {
 		cuttingLogConfig.LocalTime = config.Logger.LocalTime
 		klog.SetOutput(cuttingLogConfig.CuttingLogWriter())
 	}
-
 	//wire 依赖注入
 	svr, cleanup, err := initApp(klog.DefaultLogger(), config)
 	if err != nil {

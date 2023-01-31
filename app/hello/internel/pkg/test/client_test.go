@@ -3,13 +3,13 @@ package test
 import (
 	"context"
 	"encoding/json"
-	"examples/app/hello/internel/conf"
-	"examples/app/hello/internel/service"
-	v1 "examples/kitex_gen/hello/v1"
 	"fmt"
 	"github.com/Happy-sudo/pkg/polaris"
 	"github.com/cloudwego/kitex/pkg/klog"
 	kitexZap "github.com/kitex-contrib/obs-opentelemetry/logging/zap"
+	"hello/internel/conf"
+	"hello/internel/service"
+	v1 "hello/kitex_gen/hello/v1"
 	"testing"
 	"time"
 )

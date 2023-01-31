@@ -7,13 +7,13 @@
 package main
 
 import (
-	"examples/app/hello/internel/biz"
-	"examples/app/hello/internel/conf"
-	"examples/app/hello/internel/data"
-	server2 "examples/app/hello/internel/server"
-	"examples/app/hello/internel/service"
 	"github.com/cloudwego/kitex/pkg/klog"
 	"github.com/cloudwego/kitex/server"
+	"hello/internel/biz"
+	"hello/internel/conf"
+	"hello/internel/data"
+	server2 "hello/internel/server"
+	"hello/internel/service"
 )
 
 // Injectors from wire.go:

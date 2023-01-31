@@ -2,13 +2,13 @@ package service
 
 import (
 	"context"
-	"examples/app/hello/internel/biz"
-	"examples/app/hello/internel/conf"
-	"examples/app/hello/internel/pkg/options"
-	"examples/kitex_gen/hello/v1/hello"
 	"github.com/cloudwego/kitex/pkg/klog"
 	"github.com/google/wire"
 	"github.com/kitex-contrib/polaris"
+	"hello/internel/biz"
+	"hello/internel/conf"
+	"hello/internel/pkg/options"
+	"hello/kitex_gen/hello/v1/hello"
 )
 
 var ProviderSet = wire.NewSet(NewHelloService)

@@ -2,7 +2,6 @@ package options
 
 import (
 	"context"
-	"examples/app/hello/internel/conf"
 	"github.com/cloudwego/kitex/pkg/klog"
 	"github.com/cloudwego/kitex/pkg/limit"
 	"github.com/cloudwego/kitex/pkg/registry"
@@ -12,6 +11,7 @@ import (
 	"github.com/kitex-contrib/obs-opentelemetry/provider"
 	"github.com/kitex-contrib/obs-opentelemetry/tracing"
 	"github.com/kitex-contrib/polaris"
+	"hello/internel/conf"
 	"net"
 )
 

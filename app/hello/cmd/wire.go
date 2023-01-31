@@ -6,14 +6,14 @@
 package main
 
 import (
-	"examples/app/hello/internel/biz"
-	"examples/app/hello/internel/conf"
-	"examples/app/hello/internel/data"
-	"examples/app/hello/internel/server"
-	"examples/app/hello/internel/service"
 	"github.com/cloudwego/kitex/pkg/klog"
 	kserver "github.com/cloudwego/kitex/server"
 	"github.com/google/wire"
+	"hello/internel/biz"
+	"hello/internel/conf"
+	"hello/internel/data"
+	"hello/internel/server"
+	"hello/internel/service"
 )
 
 //*polaris.Registry, *registry.Info

@@ -2,7 +2,7 @@ package service
 
 import (
 	"context"
-	v1 "examples/kitex_gen/hello/v1"
+	v1 "hello/kitex_gen/hello/v1"
 )
 
 func (h *HelloService) Hello(ctx context.Context, req *v1.Request) (r *v1.Response, err error) {
