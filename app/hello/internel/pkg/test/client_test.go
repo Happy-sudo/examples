@@ -2,9 +2,9 @@ package test
 
 import (
 	"context"
-	"encoding/json"
 	"fmt"
 	"github.com/Happy-sudo/pkg/polaris"
+	"github.com/bytedance/sonic"
 	"github.com/cloudwego/kitex/pkg/klog"
 	kitexZap "github.com/kitex-contrib/obs-opentelemetry/logging/zap"
 	"hello/internel/conf"
@@ -30,7 +30,7 @@ func TestClientHello(t *testing.T) {
 	configFile := polaris.ConfigApi(namespace, fileGroup, fileName)
 	//解析远程配置文件
 	config := new(conf.Config)
-	err := json.Unmarshal([]byte(configFile.GetContent()), &config)
+	err := sonic.Unmarshal([]byte(configFile.GetContent()), &config)
 	if err != nil {
 		klog.CtxErrorf(ctx, "json 反序列化失败 error：%v", err)
 		panic(err)

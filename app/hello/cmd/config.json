@@ -5,10 +5,14 @@
     "client_name":"hello-client",
     "version": "v1.0.0"
   },
+  "client_connect":{
+      "hello_service":"greet-service",
+      "hello_client":"greet-client"
+  },
   "server": {
     "rpc": {
       "enable": true,
-      "address": "127.0.0.1:4441",
+      "address": "127.0.0.1:4442",
       "net_work": "tcp"
     },
     "polaris": {
