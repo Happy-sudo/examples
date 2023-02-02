@@ -2,7 +2,7 @@ package data
 
 import (
 	"context"
-	"hello/internel/biz"
+	"hello/internal/biz"
 )
 
 type HelloRepo struct {

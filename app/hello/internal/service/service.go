@@ -5,9 +5,9 @@ import (
 	"github.com/cloudwego/kitex/pkg/klog"
 	"github.com/google/wire"
 	"github.com/kitex-contrib/polaris"
-	"hello/internel/biz"
-	"hello/internel/conf"
-	"hello/internel/pkg/options"
+	"hello/internal/biz"
+	"hello/internal/conf"
+	"hello/internal/pkg/options"
 	"hello/kitex_gen/hello/v1/hello"
 )
 

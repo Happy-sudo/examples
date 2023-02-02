@@ -8,8 +8,8 @@ import (
 	_ "github.com/go-sql-driver/mysql"
 	"github.com/google/wire"
 	"github.com/redis/go-redis/v9"
-	"hello/internel/conf"
-	"hello/internel/data/ent"
+	"hello/internal/conf"
+	"hello/internal/data/ent"
 	"time"
 )
 

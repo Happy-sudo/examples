@@ -3,9 +3,9 @@ package server
 import (
 	"github.com/cloudwego/kitex/pkg/klog"
 	"github.com/cloudwego/kitex/server"
-	"hello/internel/conf"
-	"hello/internel/pkg/options"
-	"hello/internel/service"
+	"hello/internal/conf"
+	"hello/internal/pkg/options"
+	"hello/internal/service"
 	"hello/kitex_gen/hello/v1/hello"
 )
 

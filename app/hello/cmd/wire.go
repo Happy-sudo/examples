@@ -9,11 +9,11 @@ import (
 	"github.com/cloudwego/kitex/pkg/klog"
 	kserver "github.com/cloudwego/kitex/server"
 	"github.com/google/wire"
-	"hello/internel/biz"
-	"hello/internel/conf"
-	"hello/internel/data"
-	"hello/internel/server"
-	"hello/internel/service"
+	"hello/internal/biz"
+	"hello/internal/conf"
+	"hello/internal/data"
+	"hello/internal/server"
+	"hello/internal/service"
 )
 
 //*polaris.Registry, *registry.Info

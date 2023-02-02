@@ -9,11 +9,11 @@ package main
 import (
 	"github.com/cloudwego/kitex/pkg/klog"
 	"github.com/cloudwego/kitex/server"
-	"hello/internel/biz"
-	"hello/internel/conf"
-	"hello/internel/data"
-	server2 "hello/internel/server"
-	"hello/internel/service"
+	"hello/internal/biz"
+	"hello/internal/conf"
+	"hello/internal/data"
+	server2 "hello/internal/server"
+	"hello/internal/service"
 )
 
 // Injectors from wire.go:

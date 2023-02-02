@@ -12,7 +12,7 @@ import (
 	"github.com/kitex-contrib/obs-opentelemetry/provider"
 	"github.com/kitex-contrib/obs-opentelemetry/tracing"
 	"github.com/kitex-contrib/polaris"
-	"hello/internel/conf"
+	"hello/internal/conf"
 	"time"
 )
 

@@ -8,7 +8,7 @@ import (
 	"github.com/bytedance/sonic"
 	"github.com/cloudwego/kitex/pkg/klog"
 	kitexZap "github.com/kitex-contrib/obs-opentelemetry/logging/zap"
-	"hello/internel/conf"
+	"hello/internal/conf"
 )
 
 var (
@@ -18,6 +18,7 @@ var (
 )
 
 func main() {
+
 	flag.Parse()
 
 	klog.SetLogger(kitexZap.NewLogger())
