@@ -4,12 +4,12 @@ import (
 	"context"
 	"database/sql"
 	entsql "entgo.io/ent/dialect/sql"
-	"entgo.io/ent/entc/integration/ent"
 	"github.com/cloudwego/kitex/pkg/klog"
 	_ "github.com/go-sql-driver/mysql"
 	"github.com/google/wire"
 	"github.com/redis/go-redis/v9"
 	"hello/internel/conf"
+	"hello/internel/data/ent"
 	"time"
 )
 
@@ -60,7 +60,12 @@ func NewDBClient(log klog.CtxLogger, config *conf.Config) *ent.Client {
 			log.CtxFatalf(context.Background(), "failed connection to mysql: %v", err)
 		}
 		log.CtxInfof(context.Background(), "mysql connection successful")
-		return ent.NewClient(ent.Driver(entsql.OpenDB(config.MysqlOptions.Driver, db)))
+
+		client := ent.NewClient(ent.Driver(entsql.OpenDB(config.MysqlOptions.Driver, db)))
+		if err := client.Schema.Create(context.Background()); err != nil {
+			log.CtxErrorf(context.Background(), "err:%s", err.Error())
+		}
+		return client
 	}
 
 	log.CtxInfof(context.Background(), "mysql 未配置")
