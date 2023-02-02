@@ -20,7 +20,9 @@ import (
 
 //*polaris.Registry, *registry.Info
 func initApp(ctxLogger klog.CtxLogger, config *conf.Config) (server.Server, func(), error) {
-	dataData, cleanup, err := data.NewData(ctxLogger)
+	client := data.NewDBClient(ctxLogger, config)
+	redisClient := data.NewRedisClient(ctxLogger, config)
+	dataData, cleanup, err := data.NewData(ctxLogger, client, redisClient)
 	if err != nil {
 		return nil, nil, err
 	}
