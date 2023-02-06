@@ -4,7 +4,7 @@ go 1.18
 
 require (
 	entgo.io/ent v0.11.7
-	github.com/Happy-sudo/pkg v0.0.0-20230131084028-0c3abf125db3
+	github.com/Happy-sudo/pkg v0.0.0-20230206093639-2350a61e5f14
 	github.com/apache/thrift v0.13.0
 	github.com/baoyxing/hertz-contrib v0.0.0-20221229074809-d4472c7839f0
 	github.com/bytedance/sonic v1.7.0
