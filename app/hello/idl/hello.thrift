@@ -11,6 +11,3 @@ struct Response {
 service Hello {
     Response hello(1: Request req)
 }
-
-
-

@@ -1,0 +1,107 @@
+version: "3"
+services:
+  apollo-configservice:
+    container_name: apollo-configservice
+    image: apolloconfig/apollo-configservice
+    ports:
+      - 8080:8080
+    volumes:
+      - "/var/apollo/pro-config-logs:/opt/logs"
+    environment:
+      - spring_datasource_url=jdbc:mysql://192.168.2.16:3306/ApolloConfigDB?characterEncoding=utf8&serverTimezone=UTC
+      - spring_datasource_username=root
+      - spring_datasource_password=123456
+    restart: always
+
+  apollo-adminservice:
+    container_name: apollo-adminservice  
+    image: apolloconfig/apollo-adminservice
+    ports:
+      - 8090:8090
+    volumes:
+      - "/var/apollo/pro-admin-logs:/opt/logs"
+    environment:
+      - spring_datasource_url=jdbc:mysql://192.168.2.16:3306/ApolloConfigDB?characterEncoding=utf8&serverTimezone=UTC
+      - spring_datasource_username=root
+      - spring_datasource_password=123456
+    depends_on:
+      - apollo-configservice
+
+    restart: always
+
+  apollo-configservice-uat:
+    container_name: apollo-configservice-uat
+    image: apolloconfig/apollo-configservice
+    ports:
+      - 8082:8080
+    volumes:
+      - "/var/apollo/uat-config-logs:/opt/logs"
+    environment:
+      - spring_datasource_url=jdbc:mysql://192.168.2.16:3306/UatApolloConfigDB?characterEncoding=utf8&serverTimezone=UTC
+      - spring_datasource_username=root
+      - spring_datasource_password=123456
+    restart: always
+
+  apollo-adminservice-uat:
+    container_name: apollo-adminservice-uat
+    image: apolloconfig/apollo-adminservice
+    ports:
+      - 8092:8090
+    volumes:
+      - "/var/apollo/uat-admin-logs:/opt/logs"
+    environment:
+      - spring_datasource_url=jdbc:mysql://192.168.2.16:3306/UatApolloConfigDB?characterEncoding=utf8&serverTimezone=UTC
+      - spring_datasource_username=root
+      - spring_datasource_password=123456
+    depends_on:
+      - apollo-configservice-uat
+
+    restart: always
+
+  apollo-configservice-dev:
+    container_name: apollo-configservice-dev
+    image: apolloconfig/apollo-configservice
+    ports:
+      - 8081:8080
+    volumes:
+      - "/var/apollo/dev-config-logs:/opt/logs"
+    environment:
+      - spring_datasource_url=jdbc:mysql://192.168.2.16:3306/DevApolloConfigDB?characterEncoding=utf8&serverTimezone=UTC
+      - spring_datasource_username=root
+      - spring_datasource_password=123456
+    restart: always
+
+  apollo-adminservice-dev:
+    container_name: apollo-adminservice-dev 
+    image: apolloconfig/apollo-adminservice
+    ports:
+      - 8091:8090
+    volumes:
+      - "/var/apollo/dev-admin-logs:/opt/logs"
+    environment:
+      - spring_datasource_url=jdbc:mysql://192.168.2.16:3306/DevApolloConfigDB?characterEncoding=utf8&serverTimezone=UTC
+      - spring_datasource_username=root
+      - spring_datasource_password=123456
+    depends_on:
+      - apollo-configservice-dev
+    restart: always
+    
+  apollo-portal:
+    container_name: apollo-portal
+    image: apolloconfig/apollo-portal
+    ports:
+      - 8070:8070
+    volumes:
+      - "/var/apollo/portal-logs:/opt/logs"      
+    environment:
+      - spring_datasource_url=jdbc:mysql://192.168.2.16:3306/ApolloPortalDB?characterEncoding=utf8&serverTimezone=UTC
+      - spring_datasource_username=root
+      - spring_datasource_password=123456
+      - dev_meta=http://192.168.2.19:8081
+      - uat_meta=http://192.168.2.19:8082
+      - pro_meta=http://192.168.2.19:8080
+    depends_on:
+      - apollo-adminservice
+      - apollo-adminservice-dev
+      - apollo-adminservice-uat
+    restart: always    
