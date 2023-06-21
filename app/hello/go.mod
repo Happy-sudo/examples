@@ -5,9 +5,9 @@ go 1.18
 require (
 	entgo.io/ent v0.11.7
 	github.com/Happy-sudo/pkg v0.0.0-20230206103212-819a5c723cb0
-	github.com/apache/thrift v0.13.0
 	github.com/baoyxing/hertz-contrib v0.0.0-20221229074809-d4472c7839f0
 	github.com/bytedance/sonic v1.7.0
+	github.com/cloudwego/kitex v0.4.4
 	github.com/go-sql-driver/mysql v1.7.0
 	github.com/google/wire v0.5.0
 	github.com/kitex-contrib/obs-opentelemetry v0.1.0
@@ -20,6 +20,7 @@ require (
 require (
 	ariga.io/atlas v0.9.1-0.20230119145809-92243f7c55cb // indirect
 	github.com/agext/levenshtein v1.2.1 // indirect
+	github.com/apache/thrift v0.13.0 // indirect
 	github.com/apparentlymart/go-textseg/v13 v13.0.0 // indirect
 	github.com/beorn7/perks v1.0.1 // indirect
 	github.com/bytedance/gopkg v0.0.0-20220531084716-665b4f21126f // indirect
@@ -30,7 +31,6 @@ require (
 	github.com/choleraehyq/pid v0.0.15 // indirect
 	github.com/cloudwego/fastpb v0.0.3 // indirect
 	github.com/cloudwego/frugal v0.1.3 // indirect
-	github.com/cloudwego/kitex v0.4.4 // indirect
 	github.com/cloudwego/netpoll v0.3.1 // indirect
 	github.com/cloudwego/thriftgo v0.2.4 // indirect
 	github.com/dgryski/go-rendezvous v0.0.0-20200823014737-9f7001d12a5f // indirect
@@ -97,3 +97,5 @@ require (
 	google.golang.org/protobuf v1.28.1 // indirect
 	gopkg.in/yaml.v2 v2.4.0 // indirect
 )
+
+replace github.com/apache/thrift => github.com/apache/thrift v0.13.0
