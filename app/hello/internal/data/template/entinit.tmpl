@@ -1,0 +1,52 @@
+package schema
+
+import (
+    "entgo.io/ent"
+    "entgo.io/ent/dialect/entsql"
+    "entgo.io/ent/schema"
+    "entgo.io/ent/schema/field"
+    "entgo.io/ent/schema/index"
+)
+
+// {{ . }} holds the schema definition for the {{ . }} entity.
+type {{ . }} struct {
+    ent.Schema
+}
+
+// Annotations Create tables
+func ({{ . }}) Annotations() []schema.Annotation {
+	return []schema.Annotation{
+		entsql.Annotation{Table: "{{ . }}"},
+		schema.Comment("Create {{ . }} tables"),
+	}
+}
+
+// Fields 创建字段 Optional：选填；Default：默认值；Comment：注释；Unique：唯一
+// Fields of the TemplateConf.
+func ({{ . }}) Fields() []ent.Field {
+	return []ent.Field{
+		field.String("field1").Optional().Default("").Comment("备注"),
+		field.Time("delete_time").Optional().Comment("删除时间"),
+	}
+}
+
+func ({{ . }}) Mixin() []ent.Mixin {
+	return []ent.Mixin{
+		mixin.Time{},
+	}
+}
+
+// Indexes 建立索引
+func ({{ . }}) Indexes() []ent.Index {
+	return []ent.Index{
+		// 非唯一约束索引
+		index.Fields("field1", "field2"),
+		// 唯一约束索引
+		index.Fields("field1", "field2").Unique(),
+	}
+}
+
+// Edges of the TemplateConf.
+func ({{ . }}) Edges() []ent.Edge {
+	return nil
+}

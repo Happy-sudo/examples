@@ -1,1 +1,1 @@
-kitex.exe -module hello -type thrift -I app -v .\idl\hello.thrift
+kitex.exe -module xxx -type thrift -I app -v .\idl\xxx.thrift

@@ -1,2 +1,2 @@
 #!/usr/bin/env bash
-kitex -module hello -type thrift -I app -v ./idl/hello.thrift
+kitex -module xxx -type thrift -I app -v ./idl/xxx.thrift

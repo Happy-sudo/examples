@@ -9,11 +9,11 @@ package main
 import (
 	"github.com/cloudwego/kitex/pkg/klog"
 	"github.com/cloudwego/kitex/server"
-	"hello/internal/biz"
-	"hello/internal/conf"
-	"hello/internal/data"
-	server2 "hello/internal/server"
-	"hello/internal/service"
+	"xxx/internal/biz"
+	"xxx/internal/conf"
+	"xxx/internal/data"
+	server2 "xxx/internal/server"
+	"xxx/internal/service"
 )
 
 // Injectors from wire.go:
@@ -26,10 +26,10 @@ func initApp(ctxLogger klog.CtxLogger, config *conf.Config) (server.Server, func
 	if err != nil {
 		return nil, nil, err
 	}
-	helloRepo := data.NewHelloRepo(dataData)
-	helloUseCase := biz.NewHelloUseCase(helloRepo, ctxLogger)
-	helloService := service.NewHelloService(helloUseCase, ctxLogger)
-	serverServer := server2.NewRPCServer(helloService, config, ctxLogger)
+	xxxRepo := data.NewXXXRepo(dataData)
+	xxxUseCase := biz.NewXXXUseCase(xxxRepo, ctxLogger)
+	xxxService := service.NewXXXService(xxxUseCase, ctxLogger)
+	serverServer := server2.NewRPCServer(xxxService, config, ctxLogger)
 	return serverServer, func() {
 		cleanup()
 	}, nil

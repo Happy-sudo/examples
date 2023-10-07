@@ -8,12 +8,12 @@ import (
 	_ "github.com/go-sql-driver/mysql"
 	"github.com/google/wire"
 	"github.com/redis/go-redis/v9"
-	"hello/internal/conf"
-	"hello/internal/data/ent"
 	"time"
+	"xxx/internal/conf"
+	"xxx/internal/data/ent"
 )
 
-var ProviderSet = wire.NewSet(NewData, NewHelloRepo, NewDBClient, NewRedisClient)
+var ProviderSet = wire.NewSet(NewData, NewXXXRepo, NewDBClient, NewRedisClient)
 
 type Data struct {
 	DB    *ent.Client
@@ -64,6 +64,9 @@ func NewDBClient(log klog.CtxLogger, config *conf.Config) *ent.Client {
 		client := ent.NewClient(ent.Driver(entsql.OpenDB(config.MysqlOptions.Driver, db)))
 		if err := client.Schema.Create(context.Background()); err != nil {
 			log.CtxErrorf(context.Background(), "err:%s", err.Error())
+		}
+		if config.MysqlOptions.SqlLog {
+			client = client.Debug()
 		}
 		return client
 	}

@@ -1,0 +1,91 @@
+service:
+  namespace: examples
+  server_name: xxx-service
+  client_name: xxx-client
+  version: v1.0.0
+client_connect:
+  xxx_service: greet-service
+  xxx_client: greet-client
+server:
+  rpc:
+    enable: true
+    address: '127.0.0.1:4442'
+    net_work: tcp
+  polaris:
+    enable: true
+  jaeger:
+    enable: true
+    endpoint: '127.0.0.1:4317'
+  transport:
+    enable: false
+  limit:
+    enable: false
+    max_connections: 10000
+    max_qps: 1000
+  stats_level:
+    level_disabled: false
+    level_base: false
+    level_detailed: true
+client:
+  timeout_control:
+    rpc_time_out:
+      enable: false
+      time_out: 3s
+    connect_time_out:
+      enable: false
+      time_out: 50ms
+  connection_type:
+    short_connection:
+      enable: false
+    long_connection:
+      enable: false
+      max_idle_per_address: 10
+      min_idle_per_address: 2
+      max_idle_global: 100
+      max_idle_time_out: 60s
+    transport:
+      enable: false
+      mux_connection: 2
+  failure_retry:
+    enable: false
+    max_retry_times: 5
+  load_balancer:
+    enable: false
+  cbsuite:
+    enable: false
+logger:
+  enable: true
+  file_name: ./log/xxx-service.log
+  max_size: 1
+  max_backups: 10
+  max_age: 30
+  compress: false
+  local_time: true
+mysql_options:
+  enable: false
+  driver: mysql
+  source: username:password@tcp(127.0.0.1:3306)/DB_NAME?charset=utf8mb4&parseTime=True&loc=Local
+  sql_log: true
+  max_open_conns: 2
+  max_idle_conns: 1
+  conn_max_lifetime: 3600
+  conn_max_idle_time: 3600
+redis_options:
+  enable: true
+  network: tcp
+  addr: '127.0.0.1:6379'
+  user_name: ''
+  password: '123456'
+  db: 0
+  pool_size: 15
+  min_idle_conns: 10
+  dial_timeout: 5
+  read_timeout: 3
+  write_timeout: 3
+  pool_timeout: 4
+  conn_max_idle_time: 60
+  conn_max_life_time: 5
+  max_idle_conns: 1
+  max_retries: 0
+  min_retry_backoff: 0.008
+  max_retry_backoff: 0.512

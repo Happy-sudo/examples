@@ -1,3 +1,3 @@
-go build -o hello.exe
+go build -o xxx.exe
 
-hello.exe
+xxx.exe

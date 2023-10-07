@@ -11,8 +11,8 @@ import (
 	"github.com/kitex-contrib/obs-opentelemetry/provider"
 	"github.com/kitex-contrib/obs-opentelemetry/tracing"
 	"github.com/kitex-contrib/polaris"
-	"hello/internal/conf"
 	"net"
+	"xxx/internal/conf"
 )
 
 func ServerOptions(c *conf.Config, log klog.CtxLogger) []server.Option {

@@ -1,2 +1,2 @@
 #!/usr/bin/env bash
-go run -mod=mod entgo.io/ent/cmd/ent init User Pet
+go run -mod=mod entgo.io/ent/cmd/ent new --template ./template/entinit.tmpl User Pet

@@ -1,13 +1,13 @@
 {
   "service": {
     "namespace": "examples",
-    "server_name": "hello-service",
-    "client_name": "hello-client",
+    "server_name": "xxx-service",
+    "client_name": "xxx-client",
     "version": "v1.0.0"
   },
   "client_connect": {
-    "hello_service": "greet-service",
-    "hello_client": "greet-client"
+    "XXX_service": "greet-service",
+    "XXX_client": "greet-client"
   },
   "server": {
     "rpc": {
@@ -76,7 +76,7 @@
   },
   "logger": {
     "enable": true,
-    "file_name": "./log/hello-service.log",
+    "file_name": "./log/XXX-service.log",
     "max_size": 1,
     "max_backups": 10,
     "max_age": 30,

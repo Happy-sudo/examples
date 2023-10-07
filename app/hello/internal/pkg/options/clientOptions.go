@@ -12,8 +12,8 @@ import (
 	"github.com/kitex-contrib/obs-opentelemetry/provider"
 	"github.com/kitex-contrib/obs-opentelemetry/tracing"
 	"github.com/kitex-contrib/polaris"
-	"hello/internal/conf"
 	"time"
+	"xxx/internal/conf"
 )
 
 type ctxKey int
